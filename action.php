@@ -1,4 +1,7 @@
 <?php
+ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+error_reporting(-1);
 include "db.php";
 if(isset($_POST["category"])){
 	$category_query = "SELECT * FROM categories";
@@ -33,7 +36,7 @@ if(isset($_POST["brand"])){
 			$bid = $row["brand_id"];
 			$brand_name = $row["brand_title"];
 			echo "
-					<li><a href='#' class='category' cid='$cid'>$brand_name</a></li>
+					<li><a href='#' class='selectbrand' bid='$bid'>$brand_name</a></li>
 			";
 		}
 		echo "</div>";
@@ -42,7 +45,7 @@ if(isset($_POST["brand"])){
 
 
 // get_product
-if(isset($_POST["getproduct"])) {
+if(isset($_POST["getproduct"]) ) {
     $product_query = "SELECT * FROM products ORDER BY RAND () LIMIT 0,9";
     $run_query = mysqli_query($con,$product_query);
 
@@ -60,13 +63,55 @@ if(isset($_POST["getproduct"])) {
                         <div class='panel-heading'>$pro_title</div>
                         <div class='panel-body'> <img src='product_images/$pro_image' style='width:160px; height:250px;/></div>
                         <div class='panel-heading'>$.$pro_price.00
-                        <button  style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
+                        <button pid='$pro_id' style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
                     </div>
                     </div>
                     </div>
             
             ";
         }
+    }
+}
+
+
+//
+
+if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectbrand"])  || isset($_POST["search"])){
+    
+    if(isset($_POST["get_seleted_Category"])){
+        $id = $_POST["cat_id"];
+        $sql = "SELECT * from products WHERE product_cat = '$id'";
+
+    }else if(isset($_POST["selectbrand"])){
+        $id = $_POST["brand_id"];
+        $sql = "SELECT * from products WHERE product_brand = '$id'";
+    } else {
+        $keyword = $_POST["keyword"];
+		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+    }
+
+   
+    $run_query = mysqli_query($con,$sql);
+
+    while($row = mysqli_fetch_array($run_query)){
+            $pro_id    = $row['product_id'];
+			$pro_cat   = $row['product_cat'];
+			$pro_brand = $row['product_brand'];
+			$pro_title = $row['product_title'];
+			$pro_price = $row['product_price'];
+            $pro_image = $row['product_image'];
+            echo "
+            <div class='col-md-4'>
+                    <div class='panel panel-info'>
+                        <div class='panel-heading'>$pro_title</div>
+                        <div class='panel-body'> <img src='product_images/$pro_image' style='width:160px; height:250px;/></div>
+                        <div class='panel-heading'>$.$pro_price.00
+                        <button pid='$pro_id' style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
+                    </div>
+                    </div>
+                    </div>
+            
+            ";
     }
 }
 ?>
