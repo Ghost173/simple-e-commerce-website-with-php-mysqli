@@ -1,3 +1,9 @@
+<?php
+ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+error_reporting(-1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +13,11 @@
     <title>ONLINE STORE</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
    
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" 
      crossorigin="anonymous">
@@ -82,20 +90,28 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-2">
-            <div class="nav nav-pills nav-stacked"> 
+
+         <div id="get_category">
+
+         </div>   
+
+          <!--  <div class="nav nav-pills nav-stacked"> 
                 <li class="active"><a href="#"><h4>Categories</h4></a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Categories</a></li>
-            </div>
-            <div class="nav nav-pills nav-stacked"> 
-                <li class="active"><a href="#"><h4>Categories</h4></a></li>
+            </div> -->
+            <div id="get_brand">
+
+            </div>  
+           <!-- <div class="nav nav-pills nav-stacked"> 
+                <li class="active"><a href="#"><h4>BRANDS</h4></a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Categories</a></li>
-            </div>
+            </div> -->
         </div>
 
         <div class="col-md-8">
