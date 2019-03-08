@@ -33,7 +33,7 @@ error_reporting(-1);
             <li> <a href="#"><i class="fas fa-home"></i>Home</a></li>
             <li> <a href="#"><i class="fas fa-store"></i>Product</a></li>
             <li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
-            <li style="top:10px;left:20px;"><input type="submit" class="btn btn-primary" id="search_btn"></li>
+            <li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Search</button></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -120,7 +120,7 @@ error_reporting(-1);
             <div class="panel-body">
             <div id="get_product">
             <!--here we get product details from ajax -->
-            
+
             </div>
               <!--  <div class="col-md-4">
                     <div class="panel panel-info">
@@ -129,8 +129,9 @@ error_reporting(-1);
                         <div class="panel-heading">$500.00
                             <button style="float:right;" class="btn btn-danger btn-xs">AddToCart</button>
                         </div>
+                        </div>
                     </div> -->
-                </div>
+                
             </div>
             <div class="panel-footer">&copy;2017</div>
         </div>
