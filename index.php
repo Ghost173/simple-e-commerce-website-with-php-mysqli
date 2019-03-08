@@ -118,14 +118,18 @@ error_reporting(-1);
             <div class="panel panel-info">
             <div class="panel-heading">Products</div>
             <div class="panel-body">
-                <div class="col-md-4">
+            <div id="get_product">
+            <!--here we get product details from ajax -->
+            
+            </div>
+              <!--  <div class="col-md-4">
                     <div class="panel panel-info">
                         <div class="panel-heading">Samsung Glaxy</div>
                         <div class="panel-body"> <img src="product_images/images.jpg"/></div>
                         <div class="panel-heading">$500.00
                             <button style="float:right;" class="btn btn-danger btn-xs">AddToCart</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="panel-footer">&copy;2017</div>
