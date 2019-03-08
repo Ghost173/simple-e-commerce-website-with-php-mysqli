@@ -2,6 +2,8 @@ $(document).ready(function(){
    //alert("hello");   // this is for testing js working or not :D
    cat();
    brand();
+   product();
+   //category
    function cat(){
 		$.ajax({
 			url	:	"action.php",
@@ -13,6 +15,7 @@ $(document).ready(function(){
 			}
 		})
    }
+   //barnds
    function brand(){
 		$.ajax({
 			url	:	"action.php",
@@ -20,6 +23,19 @@ $(document).ready(function(){
 			data	:	{brand:1},
 			success	:	function(data){
 				$("#get_brand").html(data);
+				
+			}
+		})
+   }
+   
+// /product
+   function product(){
+		$.ajax({
+			url	:	"action.php",
+			method:	"POST",
+			data	:	{getproduct:1},
+			success	:	function(data){
+				$("#get_product").html(data);
 				
 			}
 		})
