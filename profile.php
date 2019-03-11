@@ -41,9 +41,9 @@ header("location:index.php");
             <li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
             <li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Search</button></li>
         </ul>
-
+<!-- cert -->
         <ul class="nav navbar-nav navbar-right">
-            <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-cart-plus"></i>Cart <span class="badge">0</span></a>
+            <li> <a href="#" id ="cart_container" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-cart-plus"></i>Cart <span class="badge">0</span></a>
             <div class="dropdown-menu" style="width:400px;">
                 <div class="panel panel-success">
                     <div class="panel-heading">
@@ -54,7 +54,16 @@ header("location:index.php");
                             <div class="col-md-3"> prices in $</div>
                         </div>
                     </div>
-                    <div class="panel-body"></div>
+                    <div class="panel-body">
+                    <div id="cart_product"> 
+                    <!--<div class="row">
+                            <div class="col-md-3">SL.NO</div>
+                            <div class="col-md-3">product image</div>
+                            <div class="col-md-3">produc name</div>
+                            <div class="col-md-3"> prices in $</div>
+                        </div> -->
+                        </div>
+                    </div>
                     <div class="panel-footer"></div>
                 </div>
             </div>
@@ -110,6 +119,10 @@ header("location:index.php");
         </div>
 
         <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12" id="product_img"> 
+            </div>
+        </div>
             <div class="panel panel-info">
             <div class="panel-heading">Products</div>
             <div class="panel-body">
