@@ -53,7 +53,7 @@ if($_SESSION["uid"])
                             <div class="col-md-3"> prices in $</div>
                         </div>
                     </div>
-                    <div class="panel-body"></div>
+                    <div class="panel-body"><b>login to add cart</b></div>
                     <div class="panel-footer"></div>
                 </div>
             </div>
@@ -120,6 +120,7 @@ if($_SESSION["uid"])
         </div>
 
         <div class="col-md-8">
+        
             <div class="panel panel-info">
             <div class="panel-heading">Products</div>
             <div class="panel-body">
