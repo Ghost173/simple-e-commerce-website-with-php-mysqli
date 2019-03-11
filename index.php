@@ -67,7 +67,7 @@ error_reporting(-1);
                 <label for="email">Password</label>
                 <input type="password" class="form-control" name="password" id="password" required/>
                 <p><br/></p>
-                <a href="#" style="color:white; list-style:none;">Forgotten Password</a><input type="submit" class="btn btn-success" style="float:right;">
+                <a href="#" style="color:white; list-style:none;">Forgotten Password</a><input type="submit" class="btn btn-success" id = "Login" value="login" style="float:right ; >
                 </form>
                 </div>
                 <div class="panel-footer" id="e_msg"></div>
@@ -75,7 +75,7 @@ error_reporting(-1);
                 </div>       
             </ul>
             </li>
-            <li> <a href="#"><i class="fas fa-user-plus"></i>SignUp</a></li>
+            <li> <a href="customer_registration.php"><i class="fas fa-user-plus"></i>SignUp</a></li>
         </ul>
     </div>
 </div>
