@@ -1,7 +1,8 @@
 <?php
-ini_set('display_startup_errors',1);
-ini_set('display_errors',1);
-error_reporting(-1);
+//ini_set('display_startup_errors',1);
+//ini_set('display_errors',1);
+//error_reporting(-1);
+session_start();
 include "db.php";
 if(isset($_POST["category"])){
 	$category_query = "SELECT * FROM categories";
@@ -63,7 +64,7 @@ if(isset($_POST["getproduct"]) ) {
                         <div class='panel-heading'>$pro_title</div>
                         <div class='panel-body'> <img src='product_images/$pro_image' style='width:160px; height:250px;/></div>
                         <div class='panel-heading'>$.$pro_price.00
-                        <button pid='$pro_id' style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
+                        <button pid='$pro_id' id='product' style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
                     </div>
                     </div>
                     </div>
@@ -106,7 +107,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectbrand"])  || iss
                         <div class='panel-heading'>$pro_title</div>
                         <div class='panel-body'> <img src='product_images/$pro_image' style='width:160px; height:250px;/></div>
                         <div class='panel-heading'>$.$pro_price.00
-                        <button pid='$pro_id' style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
+                        <button pid='$pro_id' id='product' style='float:right;' class='btn btn-danger btn-xs'>AddToCart</button>
                     </div>
                     </div>
                     </div>
@@ -115,19 +116,30 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectbrand"])  || iss
     }
 }
 
-// login 
-if(isset($_POST["userLogin"])){
-    $email = mysqli_real_escape_string ($con, $_POST["userEmail"]);
-    $password = md5($_POST["userPassword"]);
-
-    $sql = "SELECT * FROM user_info WHERE email='$email' AND password = '$password'";
+if(isset($_POST["addProduct"])){
+$p_id = $_POST["proId"];
+$user_id = $_SESSION["uid"];
+$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id' ";
+$run_query = mysqli_query($con,$sql);
+$count = mysqli_num_rows($run_query);
+if ($count   > 0) {
+    echo "product is a;ready added";
+}else {
+    $sql = "SELECT * FROM products WHERE product_id='$p_id'";
     $run_query = mysqli_query($con,$sql);
-    $count = mysqli_num_rows($run_query);
-    if ($count == 1) {
-        $row= mysqli_fetch_array($run_query);
-            $_SESSION["uid"] = $row["user_id"]; 
-            $_SESSION["name"] = $row["first_name"];
-        echo "true";
-    }
+    $row = mysqli_fetch_array($run_query);
+
+    $id=  $row["product_id"];
+    $pro_name=$row["product_title"];
+    $pro_image=$row["product_image"];
+    $pro_price=$row["product_price"];
+    
+$sql="INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`, `product_title`, `product_image`, `price`, `total_amt`) 
+VALUES (NULL, '$p_id', '0', '$user_id', '1', '$pro_name', '$pro_image', '$pro_price', '$pro_price');";
+
+if(mysqli_query($con,$sql)) {
+    echo "product is added";
+}
+}
 }
 ?>
