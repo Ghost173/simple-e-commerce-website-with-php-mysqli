@@ -2,10 +2,11 @@
 ini_set('display_startup_errors',1);
 ini_set('display_errors',1);
 error_reporting(-1);
+
 session_start();
-if($_SESSION["uid"])
-{
-    header("location:profile.php");
+// session is not set
+if (!isset($_SESSION["uid"])) {
+header("location:index.php");
 }
 ?>
 
@@ -59,28 +60,17 @@ if($_SESSION["uid"])
             </div>
             </li>
 
-            <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i>SignIn</a>
+            <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i><?php echo $_SESSION["name"]; ?></a>
             <!--signin dropdown -->
             <ul class="dropdown-menu">
-            <div style="width:300px;">
-                <div class="panel panel-primary">
-                <div class="panel-heading">Login</div>
-                <div class="panel-heading">
-                <form onsubmit="return false" id="login">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" required/>
-                <label for="email">Password</label>
-                <input type="password" class="form-control" name="password" id="password" required/>
-                <p><br/></p>
-                <a href="#" style="color:white; list-style:none;">Forgotten Password</a><input type="submit" class="btn btn-success" id = "Login" value="login" style="float:right ; >
-                </form>
-                </div>
-                <div class="panel-footer" id="e_msg"></div>
-                </div>
-                </div>       
+                <li><a href="#" style="text-decoration:none; color:blue;">Cart</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="text-decoration:none; color:blue;">Change password</a></li>
+                <li class="divider"></li>
+                <li><a href="logout.php" style="text-decoration:none; color:blue;">Logout</a></li>
             </ul>
             </li>
-            <li> <a href="customer_registration.php"><i class="fas fa-user-plus"></i>SignUp</a></li>
+           
         </ul>
     </div>
 </div>
