@@ -138,8 +138,41 @@ $sql="INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`, `product_tit
 VALUES (NULL, '$p_id', '0', '$user_id', '1', '$pro_name', '$pro_image', '$pro_price', '$pro_price');";
 
 if(mysqli_query($con,$sql)) {
-    echo "product is added";
+    echo "
+    <div class='alert alert-success'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Product added to cert :)</b>
+    </div>
+    ";
 }
 }
+}
+
+
+//cart product from data base
+if (isset($_POST["get_cart_product"])){
+    $uid = $_SESSION["uid"];
+    $sql = "SELECT * FROM cart WHERE user_id='$uid'";
+    $run_query = mysqli_query($con,$sql);
+    $count = mysqli_num_rows($run_query);
+    if ($count > 0 ) {
+        $no =1;
+        while ($row = mysqli_fetch_array($run_query)) {
+            $id = $row["id"];
+            $pro_id =$row["p_id"];
+            $pro_name=$row["product_title"]; 
+            $pro_image=$row["product_image"];
+            $pro_price=$row["price"];
+            echo "
+            <div class='row'>
+                <div class='col-md-3'>$no</div>
+                <div class='col-md-3'><img src='product_images/$pro_image' width='60px' height='50px'></div>
+                <div class='col-md-3'>$pro_name</div>
+                <div class='col-md-3'>$$pro_price.00</div>
+            </div>
+            
+            ";
+            $no = $no + 1 ;
+        }
+    }
 }
 ?>
