@@ -110,12 +110,35 @@ $(document).ready(function(){
 	var pass = $("#password").val();
 	//alert(0);
 	$.ajax ({
-		url : "action.php",
+		url : "login.php",
 		method : "POST",
 		data : {userLogin:1,userEmail:email, userPassword:pass},
 		success :function(data) {
+			//alert(data);
+		if (data == "loginsuccess"){
+			//alert(data)
+			window.location.href = "profile.php";
+		}
+		}
+	})
+  })
+
+  // add to cart
+
+  $("body").delegate("#product","click",function(event){
+	  event.preventDefault();
+	//alert(0);
+	var p_id = $(this).attr('pid');
+	//alert(p_id);
+	$.ajax({
+		url : "action.php",
+		method : "POST",
+		data : {addProduct:1,proId:p_id},
+		success : function(data){
 			alert(data);
 		}
 	})
   })
+	 
+ 
 })
