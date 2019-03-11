@@ -135,10 +135,25 @@ $(document).ready(function(){
 		method : "POST",
 		data : {addProduct:1,proId:p_id},
 		success : function(data){
-			alert(data);
+			//alert(data);
+			$("#product_img").html(data);	
 		}
 	})
   })
 	 
- 
+ // cart increment
+ $("#cart_container").click(function(event){
+event.preventDefault();
+//alert(0);
+$.ajax({
+	url : "action.php",
+	method : "POST",
+	data : {get_cart_product:1},
+	success : function(data){
+		//alert(data);
+	$("#cart_product").html(data);	
+	}	
+})
+
+ })
 })
