@@ -89,4 +89,33 @@ $(document).ready(function(){
 		})
      }
   })
+
+  $("#signup_button").click(function(event){
+	  //alert(0);
+	  event.preventDefault();
+	  $.ajax({
+		url		:	"register.php",
+		method	:	"POST",
+		data	:	$("form").serialize(),
+		success	:	function(data){
+		//alert(data);
+		$("#signup_msg").html(data);
+		}
+	})
+  })
+
+  $("#Login").click(function(event){
+	event.preventDefault();
+	var email = $("#email").val();
+	var pass = $("#password").val();
+	//alert(0);
+	$.ajax ({
+		url : "action.php",
+		method : "POST",
+		data : {userLogin:1,userEmail:email, userPassword:pass},
+		success :function(data) {
+			alert(data);
+		}
+	})
+  })
 })
