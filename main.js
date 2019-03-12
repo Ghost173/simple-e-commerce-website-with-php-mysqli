@@ -169,5 +169,37 @@ function car_checkout() {
 	})
 }
 
+// cart qty
+$("body").delegate(".qty","keyup",function(){
+	//alert(0);
+	var pid = $(this).attr("pid");
+	//alert(pid);
+	var qty = $("#qty-"+pid).val();
+	var price =$("#price-"+pid).val();
+	var total = qty * price ;
+	//alert(total);
+	$("#total-"+pid).val(total);
+})
+//edit cart
+$("body").delegate(".remove","click", function(event){
+event.preventDefault();
+var pid = $(this).attr("remove_id");
+//alert(pid);
+$.ajax({
+	url : "action.php",
+	method : "POST",
+	data : {removefromcart:1,removeid:pid},	
+	success : function(data){
+		//alert(data);
+		$("#cart_msg").html(data);
+	}
+})
 
+})
+//delete cart
+$("body").delegate(".update","click", function(event){
+	event.preventDefault();
+	var pid = $(this).attr("update_id");
+	alert(pid);
+	})
 })
