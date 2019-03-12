@@ -156,4 +156,18 @@ $.ajax({
 })
 
  })
+
+ car_checkout();
+function car_checkout() {
+	$.ajax ({
+		url : "action.php",
+		method : "POST",
+		data : {car_checkout:1},
+		success : function(data) {
+			$("#cart_checkout").html(data);
+		}
+	})
+}
+
+
 })
