@@ -47,7 +47,7 @@ if(isset($_POST["brand"])){
 
 // get_product
 if(isset($_POST["getproduct"]) ) {
-    $product_query = "SELECT * FROM products ORDER BY RAND () LIMIT 0,9";
+    $product_query = "SELECT * FROM products ORDER BY RAND () LIMIT 0,12";
     $run_query = mysqli_query($con,$product_query);
 
     if(mysqli_num_rows($run_query) > 0) {
@@ -149,7 +149,7 @@ if(mysqli_query($con,$sql)) {
 
 
 //cart product from data base
-if (isset($_POST["get_cart_product"])){
+if (isset($_POST["get_cart_product"]) || isset($_POST["car_checkout"])){
     $uid = $_SESSION["uid"];
     $sql = "SELECT * FROM cart WHERE user_id='$uid'";
     $run_query = mysqli_query($con,$sql);
@@ -162,17 +162,45 @@ if (isset($_POST["get_cart_product"])){
             $pro_name=$row["product_title"]; 
             $pro_image=$row["product_image"];
             $pro_price=$row["price"];
-            echo "
-            <div class='row'>
-                <div class='col-md-3'>$no</div>
-                <div class='col-md-3'><img src='product_images/$pro_image' width='60px' height='50px'></div>
-                <div class='col-md-3'>$pro_name</div>
-                <div class='col-md-3'>$$pro_price.00</div>
-            </div>
-            
-            ";
-            $no = $no + 1 ;
+            $qty = $row["qty"];
+            $total = $row["total_amt"];
+
+            if (isset($_POST["get_cart_product"])) {
+                echo "
+                <div class='row'>
+                    <div class='col-md-3'>$no</div>
+                    <div class='col-md-3'><img src='product_images/$pro_image' width='60px' height='50px'></div>
+                    <div class='col-md-3'>$pro_name</div>
+                    <div class='col-md-3'>$$pro_price.00</div>
+                </div>
+                
+                ";
+                $no = $no + 1 ;
+            }else {
+                echo "
+                <div class='row'> 
+                    <div class='col-md-2'>
+                    <div class='btn-group'>
+                       <a href='#' class='btn btn-danger'><i class='fa fa-trash' aria-hidden='true'></i></a> 
+                       <a href='#' class='btn btn-primary'><i class='far fa-edit'></i></i></a> 
+                    </div>
+                    </div>
+                    <div class='col-md-2'><img src='product_images/$pro_image' width='60px' height='50px'></div>
+                    <div class='col-md-2'>$pro_name</div>
+                    <div class='col-md-2'><input type='text' class='form-control price' pid='$pro_id' id='price-$pro_id' value='$pro_price' disabled ></div>
+                    <div class='col-md-2'><input type='text' class='form-control qty' pid='$pro_id' id='qty-$pro_id' value='$qty'  ></div>
+                    <div class='col-md-2'><input type='text' class='form-control total' pid='$pro_id' id='total-$pro_id' value='$total' disabled ></div>
+                    </div>
+                
+                ";
+            }
+
+          
         }
     }
 }
+//cart check out
+//if(isset($_POST["car_checkout"])) {
+
+//
 ?>
