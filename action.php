@@ -181,8 +181,8 @@ if (isset($_POST["get_cart_product"]) || isset($_POST["car_checkout"])){
                 <div class='row'> 
                     <div class='col-md-2'>
                     <div class='btn-group'>
-                       <a href='#' class='btn btn-danger'><i class='fa fa-trash' aria-hidden='true'></i></a> 
-                       <a href='#' class='btn btn-primary'><i class='far fa-edit'></i></i></a> 
+                       <a href='#' remove_id='$pro_id' class='btn btn-danger remove'><i class='fa fa-trash' aria-hidden='true'></i></a> 
+                       <a href='#' update_id='$pro_id' class='btn btn-primary update'><i class='far fa-edit'></i></i></a> 
                     </div>
                     </div>
                     <div class='col-md-2'><img src='product_images/$pro_image' width='60px' height='50px'></div>
@@ -199,8 +199,18 @@ if (isset($_POST["get_cart_product"]) || isset($_POST["car_checkout"])){
         }
     }
 }
-//cart check out
-//if(isset($_POST["car_checkout"])) {
-
-//
+//cart delete
+if(isset($_POST["removefromcart"])) {
+$pid = $_POST["removeid"];
+$uid = $_SESSION["uid"];
+$sql = "DELETE FROM cart WHERE user_id = '$uid' AND p_id ='$pid' ";
+$run_quey = mysqli_query($con,$sql);
+if($run_quey) {
+    echo "
+    <div class='alert alert-success'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>iteam remove from cart</b>
+    </div>
+    ";
+}
+}
 ?>
