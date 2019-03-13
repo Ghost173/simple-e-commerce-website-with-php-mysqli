@@ -275,11 +275,11 @@ if (isset($_POST["car_checkout"])) {
             }
 
         echo '    
-            <input type="hidden" name="return" value="http://127.0.0.1/htmlcss/smok/payment_success.php">
-            <input type="hidden" name="cancel_return" value="http://127.0.0.1/htmlcss/smok/cancel.php">
+            <input type="hidden" name="return" value="http://127.0.0.1/onlinestore/payment_success.php">
+            <input type="hidden" name="cancel_return" value="http://127.0.0.1/onlinestore/cancel.php">
             <input type="hidden" name="currency_code" value="USD"/>
             <input type="hidden" name="custom" value="'.$uid.'"/>
-            <input style="float:right;margin-right:100px" type="image" name="submit"
+            <input style="float:right;margin-top:10px;" type="image" name="submit"
             src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypalcheckout-60px.png"
               alt="PayPal - The safer, easier way to pay online">
           </form>
