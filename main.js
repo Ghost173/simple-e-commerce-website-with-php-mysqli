@@ -124,7 +124,7 @@ $(document).ready(function(){
   })
 
   // add to cart
-
+  cart_count();
   $("body").delegate("#product","click",function(event){
 	  event.preventDefault();
 	//alert(0);
@@ -137,26 +137,44 @@ $(document).ready(function(){
 		success : function(data){
 			//alert(data);
 			$("#product_img").html(data);	
+			cart_count();
 		}
 	})
   })
 	 
  // cart increment
- $("#cart_container").click(function(event){
-event.preventDefault();
-//alert(0);
-$.ajax({
-	url : "action.php",
-	method : "POST",
-	data : {get_cart_product:1},
-	success : function(data){
-		//alert(data);
-	$("#cart_product").html(data);	
-	}	
-})
+ cart_container();
+ function cart_container (){
+	$.ajax({
+		url : "action.php",
+		method : "POST",
+		data : {get_cart_product:1},
+		success : function(data){
+			//alert(data);
+		$("#cart_product").html(data);	
+		}	
+	})
+	
+ };
 
- })
+ function cart_count() {
+	$.ajax({
+		url : "action.php",
+		method : "POST",
+		data : {cart_count:1},
+		success : function(data){
+			//alert(data);
+		$(".badge").html(data);	
+		}	
+	})
+ };
+//  $("#cart_container").click(function(event){
+// event.preventDefault();
+// //alert(0);
 
+
+//  })
+//cart check out
  car_checkout();
 function car_checkout() {
 	$.ajax ({
@@ -192,6 +210,7 @@ $.ajax({
 	success : function(data){
 		//alert(data);
 		$("#cart_msg").html(data);
+		car_checkout();
 	}
 })
 
@@ -200,6 +219,54 @@ $.ajax({
 $("body").delegate(".update","click", function(event){
 	event.preventDefault();
 	var pid = $(this).attr("update_id");
-	alert(pid);
+	//alert(pid);
+	var qty =$("#qty-"+pid).val();
+	var price =$("#price-"+pid).val();
+	var total =$("#total-"+pid).val();
+	$.ajax({
+		url : "action.php",
+		method : "POST",
+		data : {updatproduct:1,updateid:pid,qty:qty,price:price,total:total},
+		success :function(data){
+			$("#cart_msg").html(data);
+			car_checkout();
+		}
 	})
+	})
+//  	page();
+// function page() {
+// 	$.ajax ({
+// 		url: "action.php",
+// 		method:"POST",
+// 		data:{page:1},
+// 		success:function(data){
+// 			//alert(data);
+// 		$("#pageno").html(data);
+// 		}
+// 	})
+// }
+page();
+	function page(){
+		$.ajax({
+			url	:	"action.php",
+			method	:	"POST",
+			data	:	{page:1},
+			success	:	function(data){
+				$("#pageno").html(data);
+			}
+		})
+	}
+$("body").delegate("#page","click",function(){
+	var pn = $(this).attr("page");
+	//alert(pn);
+	$.ajax({
+		url	:	"action.php",
+		method	:	"POST",
+		data	:	{getproduct:1,setpage:1,pageno:pn},
+		success	:	function(data){
+			$("#get_product").html(data);
+		}
+	})
+})
+
 })
