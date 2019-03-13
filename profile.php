@@ -33,7 +33,7 @@ header("location:index.php");
 <div class="navbar navbar-inverse navbar-fixed-top"> 
     <div class="container-fluid"> 
         <div class="navbar navbar-header"> 
-            <a href="#" class="navbar-brand"> ONLINE STORE</a>
+            <a href="index.php" class="navbar-brand"> ONLINE STORE</a>
         </div>
         <ul class="nav navbar-nav">
             <li> <a href="#"><i class="fas fa-home"></i>Home</a></li>
@@ -43,7 +43,7 @@ header("location:index.php");
         </ul>
 <!-- cert -->
         <ul class="nav navbar-nav navbar-right">
-            <li> <a href="#" id ="cart_container" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-cart-plus"></i>Cart <span class="badge">0</span></a>
+            <li> <a href="c#" id ="cart_container" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-cart-plus"></i>Cart <span class="badge">0</span></a>
             <div class="dropdown-menu" style="width:400px;">
                 <div class="panel panel-success">
                     <div class="panel-heading">
@@ -72,7 +72,7 @@ header("location:index.php");
             <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-sign-in-alt"></i><?php echo $_SESSION["name"]; ?></a>
             <!--signin dropdown -->
             <ul class="dropdown-menu">
-                <li><a href="#" style="text-decoration:none; color:blue;">Cart</a></li>
+                <li><a href="cart.php" style="text-decoration:none; color:blue;">Cart</a></li>
                 <li class="divider"></li>
                 <li><a href="#" style="text-decoration:none; color:blue;">Change password</a></li>
                 <li class="divider"></li>
@@ -146,6 +146,17 @@ header("location:index.php");
 </div>  
         <div class="col-md-1"></div>
     </div>
+
+    <div class ="row">
+    <div class="col-md-12">
+    <center>
+    <ul class="pagination" id="pageno"> 
+    <li><a href="#">1</a></li>
+  
+    </center>
+    </div>
+    </div>
+
     </div>
 
 </body>
