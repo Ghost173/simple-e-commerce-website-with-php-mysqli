@@ -1,7 +1,7 @@
 <?php
-ini_set('display_startup_errors',1);
-ini_set('display_errors',1);
-error_reporting(-1);
+//ini_set('display_startup_errors',1);
+//ini_set('display_errors',1);
+//error_reporting(-1);
 session_start();
 if($_SESSION["uid"])
 {
@@ -120,7 +120,10 @@ if($_SESSION["uid"])
         </div>
 
         <div class="col-md-8">
-        
+        <div class="row">
+            <div class="col-md-12" id="product_img"> 
+            </div>
+        </div>
             <div class="panel panel-info">
             <div class="panel-heading">Products</div>
             <div class="panel-body">
@@ -143,6 +146,17 @@ if($_SESSION["uid"])
         </div>
 </div>  
         <div class="col-md-1"></div>
+    </div>
+    <div class ="row">
+    <div class="col-md-12">
+    <center>
+    <ul class="pagination" id="pageno"> 
+    <li><a href="#">1</a></li>
+  
+    </center>
+    </div>
+    </div>
+
     </div>
     </div>
 
