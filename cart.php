@@ -1,3 +1,15 @@
+<?php
+//ini_set('display_startup_errors',1);
+//ini_set('display_errors',1);
+//error_reporting(-1);
+
+session_start();
+// session is not set
+if (!isset($_SESSION["uid"])) {
+header("location:index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +33,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top"> 
     <div class="container-fluid"> 
         <div class="navbar navbar-header"> 
-            <a href="#" class="navbar-brand"> ONLINE STORE</a>
+            <a href="index.php" class="navbar-brand"> ONLINE STORE</a>
         </div>
         <ul class="nav navbar-nav">
             <li> <a href="#"><i class="fas fa-home"></i>Home</a></li>
@@ -74,7 +86,12 @@
                     <div class="col-md-2"><input type="text" class="form-control" value="500" disabled ></div>
                     </div> -->
                 </div>
-                
+                <!-- <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                    <b>Total:4000</b>
+                    </div>
+                </div> -->
                 <div class="panel-footer"></div>
             </div>
         </div>
