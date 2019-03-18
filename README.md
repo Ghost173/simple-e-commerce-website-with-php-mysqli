@@ -1,6 +1,6 @@
 ## ecommerce website with PHP MYSQLI BS AJAX JS
 
-# sql back avalible in sql folder 
+# sql back up avalible in sql folder 
 
 ## login
 * usermail : test@test.com
