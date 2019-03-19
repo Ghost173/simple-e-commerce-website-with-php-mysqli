@@ -11,7 +11,7 @@
 * login & logout
 * search
 * categories
-* cart (add edit delete update)
+* cart (add edit delete update) /only login user 
 * payment with paypal
 * pagenation 
 * sessions 
